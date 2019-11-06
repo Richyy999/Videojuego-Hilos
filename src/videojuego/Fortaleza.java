@@ -2,7 +2,7 @@ package videojuego;
 
 public class Fortaleza {
 
-	private Personaje boss;
+	private BossFinal boss;
 
 	public Fortaleza() {
 		this.boss = new BossFinal("Acnologia");

@@ -32,56 +32,38 @@ public class MainVideojuego {
 		} while (!eleccion.equals("3"));
 	}
 
+	/**
+	 * se generan aleatoriamente de 1 a 20 aliados y se enfrentan a un boss en la
+	 * fortaleza por turnos
+	 * 
+	 * @see Fortaleza#entrar(Personaje)
+	 */
 	private static void coliseo() {
 		Fortaleza fort = new Fortaleza();
-
-//		Personaje atacante1 = Generar.generarPersonajeRandom();
-//		Arma arma1 = Generar.generarArmaRandom();
-//		atacante1.setNombre(atacante1.getNombre() + " 1");
-//		atacante1.equiparArma(arma1);
-//		Personaje atacante2 = Generar.generarPersonajeRandom();
-//		Arma arma2 = Generar.generarArmaRandom();
-//		atacante2.equiparArma(arma2);
-//		atacante2.setNombre(atacante2.getNombre() + " 2");
-//		Personaje atacante3 = Generar.generarPersonajeRandom();
-//		Arma arma3 = Generar.generarArmaRandom();
-//		atacante3.equiparArma(arma3);
-//		atacante3.setNombre(atacante3.getNombre() + " 3");
-//		Personaje atacante4 = Generar.generarPersonajeRandom();
-//		Arma arma4 = Generar.generarArmaRandom();
-//		atacante4.equiparArma(arma4);
-//		atacante4.setNombre(atacante4.getNombre() + " 4");
-//
-//		HiloPersonaje hilo1 = new HiloPersonaje(fort, atacante1);
-//		HiloPersonaje hilo2 = new HiloPersonaje(fort, atacante2);
-//		HiloPersonaje hilo3 = new HiloPersonaje(fort, atacante3);
-//		HiloPersonaje hilo4 = new HiloPersonaje(fort, atacante4);
-//
-//		Thread t1 = new Thread(hilo1);
-//		Thread t2 = new Thread(hilo2);
-//		Thread t3 = new Thread(hilo3);
-//		Thread t4 = new Thread(hilo4);
-//
-//		t1.start();
-//		t2.start();
-//		t3.start();
-//		t4.start();
-
 		int rdm = (int) (Math.random() * 19) + 1;
 
 		for (int i = 1; i <= rdm; i++) {
+			// Creo de manera random a los aliados y sus armas
 			Personaje atacante1 = Generar.generarPersonajeRandom();
 			Arma arma1 = Generar.generarArmaRandom();
 			atacante1.equiparArma(arma1);
 
+			// Creo un hilo personaje con el aliado generado y la fortaleza
 			HiloPersonaje h1 = new HiloPersonaje(fort, atacante1);
 
+			// Creo un hilo
 			Thread t1 = new Thread(h1);
 
+			// Activo el hilo y los personajes atacan uno por uno
 			t1.start();
 		}
 	}
 
+	/**
+	 * genera un aliado y un enemigo random con un arma random para cada uno
+	 * 
+	 * @see MainVideojuego#atacar(Personaje, Personaje)
+	 */
 	private static void ramdon() {
 		Personaje aliado = Generar.generarPersonajeRandom();
 		Arma armaAliado = Generar.generarArmaRandom();
@@ -94,8 +76,14 @@ public class MainVideojuego {
 		atacar(aliado, rival);
 	}
 
+	/**
+	 * El usuario crea al aliado y al enemigo eligiendo sus armas y se enfrentan
+	 * 
+	 * @see Generar#generarPersonaje(String, String)
+	 * @see Generar#generarArma(String)
+	 * @see MainVideojuego#atacar(Personaje, Personaje)
+	 */
 	private static void personalizado() {
-
 		System.out.println("Elige un personaje");
 		String personaje = sc.nextLine();
 		System.out.println("Dale nombre a tu personaje");
@@ -121,6 +109,14 @@ public class MainVideojuego {
 		atacar(aliado, rival);
 	}
 
+	/**
+	 * El aliado y el enemigo se enfrentan por turnos, empezando el aliado, hasta
+	 * que uno de los dos se quede sin pv. Pueden atacar o utilizar su habilidad
+	 * especial.
+	 * 
+	 * @param aliado tu unidad
+	 * @param rival  tu enemigo
+	 */
 	public static void atacar(Personaje aliado, Personaje rival) {
 		int turno = 0;
 		while (aliado.getPv() > 0 && rival.getPv() > 0) {
