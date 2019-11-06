@@ -26,6 +26,7 @@ public class MainVideojuego {
 				break;
 			case "3":
 				coliseo();
+				// Para mostrar el menú después de todas las batallas
 				try {
 					Thread.sleep(1000);
 				} catch (InterruptedException e) {
