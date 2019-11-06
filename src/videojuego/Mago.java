@@ -9,7 +9,8 @@ public class Mago extends Personaje {
 
 	public Mago(String nombre) {
 		this.nombre = nombre;
-		this.ataque = 40;
+		this.ataque = 30;
+		this.magia = 40;
 		this.defensa = 23;
 		this.resistencia = 35;
 		this.pv = 40;
@@ -17,22 +18,23 @@ public class Mago extends Personaje {
 
 	@Override
 	public void atacar(Personaje rival) {
-		int critico = (int) (Math.random() * 4);
-		if (this.arma instanceof Varita) {
-			if (critico == 1) {
-				gritarCritico();
-				rival.setPv(rival.pv - (3 * (this.getAtaque() - rival.getResistencia())));
-			} else {
-				gritar();
-				rival.setPv(rival.pv - (this.getAtaque() - rival.getResistencia()));
-			}
-		} else {
+		if (this.arma.getTipo().equals("fisico")) {
+			int critico = (int) (Math.random() * 4);
 			if (critico == 1) {
 				gritarCritico();
 				rival.setPv(rival.pv - (3 * (this.getAtaque() - rival.getDefensa())));
 			} else {
 				gritar();
 				rival.setPv(rival.pv - (this.getAtaque() - rival.getDefensa()));
+			}
+		} else {
+			int critico = (int) (Math.random() * 5);
+			if (critico == 1) {
+				gritarCritico();
+				rival.setPv(rival.pv - (3 * (this.getMagia() - rival.getResistencia())));
+			} else {
+				gritar();
+				rival.setPv(rival.pv - (this.getMagia() - rival.getResistencia()));
 			}
 		}
 	}
@@ -51,12 +53,5 @@ public class Mago extends Personaje {
 	@Override
 	public void gritarCritico() {
 		System.out.println(this.nombre + ": Forseti's range");
-	}
-
-	@Override
-	public void equiparArma(Arma arma) {
-		if (arma.getTipo().equals("magico"))
-			this.ataque += arma.getDano();
-		setArma(arma);
 	}
 }

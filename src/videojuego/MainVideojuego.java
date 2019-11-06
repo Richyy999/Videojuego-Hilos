@@ -26,6 +26,11 @@ public class MainVideojuego {
 				break;
 			case "3":
 				coliseo();
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 				break;
 			case "4":
 				System.out.println("Adiós");
@@ -34,7 +39,7 @@ public class MainVideojuego {
 				System.out.println("Opción Inválida");
 				break;
 			}
-		} while (!eleccion.equals("3"));
+		} while (!eleccion.equals("4"));
 	}
 
 	/**

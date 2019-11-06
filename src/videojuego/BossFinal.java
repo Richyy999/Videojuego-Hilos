@@ -11,6 +11,7 @@ public class BossFinal extends Personaje {
 		this.nombre = nombre;
 		this.pv = 80;
 		this.ataque = 50;
+		this.magia = 35;
 		this.defensa = 40;
 		this.resistencia = 35;
 	}
@@ -18,11 +19,17 @@ public class BossFinal extends Personaje {
 	@Override
 	public void habEspecial(Personaje rival) {
 		System.out.println(this.nombre + " usó su habilidad especial");
-		boolean defensa = rival.getDefensa() < rival.getResistencia();
-		if (defensa) {
-			rival.setPv(rival.getPv() - (this.ataque - rival.getDefensa()));
-		} else
-			rival.setPv(rival.getPv() - (this.ataque - rival.getResistencia()));
+		if (this.arma.getTipo().equals("fisico")) {
+			if (rival.getDefensa() < rival.getResistencia()) {
+				rival.setPv(rival.getPv() - (this.ataque - rival.getDefensa()));
+			} else
+				rival.setPv(rival.getPv() - (this.ataque - rival.getResistencia()));
+		} else {
+			if (rival.getDefensa() < rival.getResistencia()) {
+				rival.setPv(rival.getPv() - (this.magia - rival.getDefensa()));
+			} else
+				rival.setPv(rival.getPv() - (this.magia - rival.getResistencia()));
+		}
 	}
 
 	@Override
@@ -33,11 +40,5 @@ public class BossFinal extends Personaje {
 	@Override
 	public void gritarCritico() {
 		System.out.println(this.nombre + ": Star Finger");
-	}
-
-	@Override
-	public void equiparArma(Arma arma) {
-		this.ataque += arma.getDano();
-		setArma(arma);
 	}
 }

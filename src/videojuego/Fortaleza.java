@@ -13,6 +13,7 @@ public class Fortaleza {
 
 	public Fortaleza() {
 		this.boss = new BossFinal("Acnologia");
+		boss.equiparArma(Generar.generarArmaRandom());
 	}
 
 	/**

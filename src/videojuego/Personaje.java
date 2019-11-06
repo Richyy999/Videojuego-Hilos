@@ -17,9 +17,13 @@ public abstract class Personaje {
 	 */
 	protected double pv;
 	/**
-	 * Ataque del personaje
+	 * Ataque físico del personaje
 	 */
-	protected double ataque;
+	protected int ataque;
+	/**
+	 * Ataque mágico del perdonaje
+	 */
+	protected int magia;
 	/**
 	 * Defensa física del personaje
 	 */
@@ -41,13 +45,24 @@ public abstract class Personaje {
 	 * @param rival enemigo del personaje que realiza el ataque
 	 */
 	public void atacar(Personaje rival) {
-		int critico = (int) (Math.random() * 5);
-		if (critico == 1) {
-			gritarCritico();
-			rival.setPv(rival.pv - (3 * (this.getAtaque() - rival.getDefensa())));
+		if (this.arma.getTipo().equals("fisico")) {
+			int critico = (int) (Math.random() * 5);
+			if (critico == 1) {
+				gritarCritico();
+				rival.setPv(rival.pv - (3 * (this.getAtaque() - rival.getDefensa())));
+			} else {
+				gritar();
+				rival.setPv(rival.pv - (this.getAtaque() - rival.getDefensa()));
+			}
 		} else {
-			gritar();
-			rival.setPv(rival.pv - (this.getAtaque() - rival.getDefensa()));
+			int critico = (int) (Math.random() * 5);
+			if (critico == 1) {
+				gritarCritico();
+				rival.setPv(rival.pv - (3 * (this.getMagia() - rival.getResistencia())));
+			} else {
+				gritar();
+				rival.setPv(rival.pv - (this.getMagia() - rival.getResistencia()));
+			}
 		}
 	}
 
@@ -76,7 +91,13 @@ public abstract class Personaje {
 	 * @param arma arma que se equipará el personaje
 	 * @see Personaje#setArma(Arma)
 	 */
-	public abstract void equiparArma(Arma arma);
+	public void equiparArma(Arma arma) {
+		if (arma.getTipo().equals("magico"))
+			this.magia += arma.getDano();
+		else
+			this.ataque += arma.getDano();
+		this.setArma(arma);
+	}
 
 	public double getAtaque() {
 		return ataque;
@@ -98,6 +119,10 @@ public abstract class Personaje {
 		return this.pv;
 	}
 
+	public int getMagia() {
+		return this.magia;
+	}
+
 	public void setPv(double pv) {
 		this.pv = pv;
 	}
@@ -106,7 +131,7 @@ public abstract class Personaje {
 		this.arma = arma;
 	}
 
-	public void setAtaque(double ataque) {
+	public void setAtaque(int ataque) {
 		this.ataque = ataque;
 	}
 
