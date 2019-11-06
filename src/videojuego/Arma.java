@@ -1,9 +1,14 @@
 package videojuego;
 
+/**
+ * 
+ * @author Ricardo Bordería Pi
+ *
+ */
 public abstract class Arma {
 
 	/**
-	 * Si el arma es mágica o fñisica
+	 * Si el arma es mágica o física
 	 */
 	protected String tipo;
 	/**

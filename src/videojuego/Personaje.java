@@ -1,15 +1,45 @@
 package videojuego;
 
+/**
+ * Personajes del videojuego
+ * 
+ * @author Ricardo Bordería Pi
+ *
+ */
 public abstract class Personaje {
 
+	/**
+	 * Nombre del Personaje
+	 */
 	protected String nombre;
+	/**
+	 * Puntos de vida del personaje
+	 */
 	protected double pv;
+	/**
+	 * Ataque del personaje
+	 */
 	protected double ataque;
+	/**
+	 * Defensa física del personaje
+	 */
 	protected int defensa;
+	/**
+	 * Resistencia mágica del personaje
+	 */
 	protected int resistencia;
 
+	/**
+	 * Arma del personaje
+	 */
 	protected Arma arma;
 
+	/**
+	 * El personaje daña a su enemigo y ese ataque puede ser crítico, ejerciendo el
+	 * triple de daño
+	 * 
+	 * @param rival enemigo del personaje que realiza el ataque
+	 */
 	public void atacar(Personaje rival) {
 		int critico = (int) (Math.random() * 5);
 		if (critico == 1) {
@@ -21,12 +51,31 @@ public abstract class Personaje {
 		}
 	}
 
+	/**
+	 * Habilidad especial que puede ejecutar en vez de atacar
+	 * 
+	 * @param rival el enemigo del que utilize la habilidad
+	 */
 	public abstract void habEspecial(Personaje rival);
 
+	/**
+	 * Grito de guera del personaje
+	 */
 	public abstract void gritar();
 
+	/**
+	 * Grito de guerra del personaje cuando realiza un ataque crítico
+	 */
 	public abstract void gritarCritico();
 
+	/**
+	 * Si el arma es de un tipo que el personaje pueda usar, se suma al ataque de
+	 * dicho personaje el daño del arma. Después se inicializa el atributo arma
+	 * independientemente de si el personaje puede usarla o no
+	 * 
+	 * @param arma arma que se equipará el personaje
+	 * @see Personaje#setArma(Arma)
+	 */
 	public abstract void equiparArma(Arma arma);
 
 	public double getAtaque() {

@@ -1,5 +1,9 @@
 package videojuego;
-
+/**
+ * 
+ * @author Ricardo Bordería Pi
+ *
+ */
 public class Guerrero extends Personaje {
 
 	public Guerrero(String nombre) {

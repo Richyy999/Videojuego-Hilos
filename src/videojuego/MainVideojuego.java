@@ -2,6 +2,11 @@ package videojuego;
 
 import java.util.Scanner;
 
+/**
+ * 
+ * @author Ricardo Bordería Pi
+ *
+ */
 public class MainVideojuego {
 
 	private static Scanner sc;

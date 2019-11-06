@@ -1,5 +1,10 @@
 package videojuego;
 
+/**
+ * 
+ * @author Ricardo Bordería Pi
+ *
+ */
 public class Berserker extends Personaje {
 
 	public Berserker(String nombre) {

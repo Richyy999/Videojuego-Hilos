@@ -1,5 +1,10 @@
 package videojuego;
 
+/**
+ * 
+ * @author Ricardo Bordería Pi
+ *
+ */
 public class Mago extends Personaje {
 
 	public Mago(String nombre) {
@@ -10,6 +15,7 @@ public class Mago extends Personaje {
 		this.pv = 40;
 	}
 
+	@Override
 	public void atacar(Personaje rival) {
 		int critico = (int) (Math.random() * 4);
 		if (this.arma instanceof Varita) {

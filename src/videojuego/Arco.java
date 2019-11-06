@@ -1,5 +1,10 @@
 package videojuego;
 
+/**
+ * 
+ * @author Ricardo Bordería Pi
+ *
+ */
 public class Arco extends Arma {
 
 	public Arco() {

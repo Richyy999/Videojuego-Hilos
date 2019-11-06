@@ -1,5 +1,10 @@
 package videojuego;
 
+/**
+ * 
+ * @author Ricardo Bordería Pi
+ *
+ */
 public class BossFinal extends Personaje {
 
 	public BossFinal(String nombre) {
@@ -22,12 +27,12 @@ public class BossFinal extends Personaje {
 
 	@Override
 	public void gritar() {
-		System.out.println(this.nombre + ": mudamudamudamudamudamuda");
+		System.out.println(this.nombre + ": oraoraoraoraoraoraoraoraora");
 	}
 
 	@Override
 	public void gritarCritico() {
-		System.out.println(this.nombre + ": The World");
+		System.out.println(this.nombre + ": Star Finger");
 	}
 
 	@Override
