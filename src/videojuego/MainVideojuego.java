@@ -29,7 +29,7 @@ public class MainVideojuego {
 				fortaleza();
 				// Para mostrar el menú después de todas las batallas
 				try {
-					Thread.sleep(1000);
+					Thread.sleep(1100);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
@@ -38,7 +38,7 @@ public class MainVideojuego {
 				supervivencia();
 				// Para mostrar el menú después de todas las batallas
 				try {
-					Thread.sleep(1000);
+					Thread.sleep(1100);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
@@ -50,7 +50,7 @@ public class MainVideojuego {
 				System.out.println("Opción Inválida");
 				break;
 			}
-		} while (!eleccion.equals("4"));
+		} while (!eleccion.equals("5"));
 	}
 
 	/**
@@ -71,18 +71,24 @@ public class MainVideojuego {
 
 		Supervivencia sup = new Supervivencia(aliado);
 
-		int rdm = (int) (Math.random() * 9) + 1;
+		int rdm = (int) (Math.random() * 3) + 1;
 		for (int i = 0; i < rdm; i++) {
-			BossFinal boss = Generar.generarBossFinal();
+			Personaje boss = Generar.generarBossFinal();
 			Arma armaBoss = Generar.generarArmaRandom();
 			boss.equiparArma(armaBoss);
 
 			HiloBoss hb = new HiloBoss(boss, sup);
 
 			Thread tb = new Thread(hb);
-			
+
 			tb.start();
 		}
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		System.out.println("Has derrotado a " + Supervivencia.getNumBosses() + " bosses");
 	}
 
 	/**

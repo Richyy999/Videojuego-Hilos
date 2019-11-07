@@ -29,7 +29,7 @@ public class Mago extends Personaje {
 				rival.setPv(rival.pv - (this.getAtaque() - rival.getDefensa()));
 			}
 		} else {
-			int critico = (int) (Math.random() * 5);
+			int critico = (int) (Math.random() * 4);
 			if (critico == 1) {
 				gritarCritico();
 				rival.setPv(rival.pv - (3 * (this.getMagia() - rival.getResistencia())));

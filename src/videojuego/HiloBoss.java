@@ -2,11 +2,11 @@ package videojuego;
 
 public class HiloBoss implements Runnable {
 
-	private BossFinal boss;
+	private Personaje boss;
 
 	private Supervivencia su;
 
-	public HiloBoss(BossFinal boss, Supervivencia su) {
+	public HiloBoss(Personaje boss, Supervivencia su) {
 		this.boss = boss;
 		this.su = su;
 	}

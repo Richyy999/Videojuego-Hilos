@@ -10,7 +10,9 @@ public class Fortaleza {
 	 * Boss de la fortaleza
 	 */
 	private BossFinal boss;
-	
+
+	private static int bajas = 0;
+
 	public Fortaleza() {
 		this.boss = new BossFinal("Acnologia");
 		boss.equiparArma(Generar.generarArmaRandom());
@@ -22,6 +24,8 @@ public class Fortaleza {
 	 * @param atacante aliado que luchará contra el boss
 	 */
 	public synchronized void entrar(Personaje atacante) {
-		MainVideojuego.atacar(atacante, boss);
+		if (boss.getPv() > 0) {
+			MainVideojuego.atacar(atacante, boss);
+		}
 	}
 }
