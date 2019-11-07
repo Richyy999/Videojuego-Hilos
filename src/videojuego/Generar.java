@@ -45,6 +45,15 @@ public class Generar {
 	}
 
 	/**
+	 * Genera un Boss Final
+	 * 
+	 * @return boss generado
+	 */
+	public static BossFinal generarBossFinal() {
+		return new BossFinal("Jotaro");
+	}
+
+	/**
 	 * Genera un arma del tipo indicado
 	 * 
 	 * @param arma tipo de arma

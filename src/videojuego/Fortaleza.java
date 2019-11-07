@@ -10,7 +10,7 @@ public class Fortaleza {
 	 * Boss de la fortaleza
 	 */
 	private BossFinal boss;
-
+	
 	public Fortaleza() {
 		this.boss = new BossFinal("Acnologia");
 		boss.equiparArma(Generar.generarArmaRandom());

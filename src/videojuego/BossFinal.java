@@ -9,7 +9,8 @@ public class BossFinal extends Personaje {
 
 	public BossFinal(String nombre) {
 		this.nombre = nombre;
-		this.pv = 80;
+		this.pvMaximo = 80;
+		this.pv = this.pvMaximo;
 		this.ataque = 50;
 		this.magia = 35;
 		this.defensa = 40;

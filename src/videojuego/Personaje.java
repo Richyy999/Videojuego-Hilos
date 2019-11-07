@@ -13,6 +13,10 @@ public abstract class Personaje {
 	 */
 	protected String nombre;
 	/**
+	 * Pv máximos del personaje
+	 */
+	protected double pvMaximo;
+	/**
 	 * Puntos de vida del personaje
 	 */
 	protected double pv;
@@ -121,6 +125,10 @@ public abstract class Personaje {
 
 	public int getMagia() {
 		return this.magia;
+	}
+
+	public double getPvMaximo() {
+		return this.pvMaximo;
 	}
 
 	public void setPv(double pv) {

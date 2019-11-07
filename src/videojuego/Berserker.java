@@ -13,7 +13,8 @@ public class Berserker extends Personaje {
 		this.magia = 10;
 		this.defensa = 35;
 		this.resistencia = 15;
-		this.pv = 45;
+		this.pvMaximo = 45;
+		this.pv = this.pvMaximo;
 	}
 
 	@Override

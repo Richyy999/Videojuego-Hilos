@@ -1,4 +1,5 @@
 package videojuego;
+
 /**
  * 
  * @author Ricardo Bordería Pi
@@ -12,7 +13,8 @@ public class Guerrero extends Personaje {
 		this.magia = 20;
 		this.defensa = 30;
 		this.resistencia = 22;
-		this.pv = 42;
+		this.pvMaximo = 42;
+		this.pv = this.pvMaximo;
 	}
 
 	@Override

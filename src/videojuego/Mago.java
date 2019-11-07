@@ -13,7 +13,8 @@ public class Mago extends Personaje {
 		this.magia = 40;
 		this.defensa = 23;
 		this.resistencia = 35;
-		this.pv = 40;
+		this.pvMaximo = 40;
+		this.pv = this.pvMaximo;
 	}
 
 	@Override

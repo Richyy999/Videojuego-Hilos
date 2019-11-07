@@ -15,7 +15,8 @@ public class MainVideojuego {
 		sc = new Scanner(System.in);
 		String eleccion = "";
 		do {
-			System.out.println("1.- Modo random\n2.- Modo normal\n3.- Coliseo\n4.- Salir");
+			System.out.println(
+					"1.- Modo random\n2.- Modo normal\n3.- Asalto a la Fortaleza de Acnologia\n4.- Supervivencia\n5.- Salir");
 			eleccion = sc.nextLine();
 			switch (eleccion) {
 			case "1":
@@ -25,7 +26,7 @@ public class MainVideojuego {
 				personalizado();
 				break;
 			case "3":
-				coliseo();
+				fortaleza();
 				// Para mostrar el menú después de todas las batallas
 				try {
 					Thread.sleep(1000);
@@ -34,6 +35,15 @@ public class MainVideojuego {
 				}
 				break;
 			case "4":
+				supervivencia();
+				// Para mostrar el menú después de todas las batallas
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				break;
+			case "5":
 				System.out.println("Adiós");
 				break;
 			default:
@@ -44,12 +54,44 @@ public class MainVideojuego {
 	}
 
 	/**
+	 * se generan aleatoriamente de 1 a 10 bosses y se enfrentan a tu luchador por
+	 * turnos
+	 */
+	private static void supervivencia() {
+		System.out.println("Elige un personaje");
+		String personaje = sc.nextLine();
+		System.out.println("Dale nombre a tu personaje");
+		String nombre = sc.nextLine();
+		Personaje aliado = Generar.generarPersonaje(personaje, nombre);
+
+		System.out.println("Elige un arma");
+		String arma = sc.nextLine();
+		Arma armaAliado = Generar.generarArma(arma);
+		aliado.equiparArma(armaAliado);
+
+		Supervivencia sup = new Supervivencia(aliado);
+
+		int rdm = (int) (Math.random() * 9) + 1;
+		for (int i = 0; i < rdm; i++) {
+			BossFinal boss = Generar.generarBossFinal();
+			Arma armaBoss = Generar.generarArmaRandom();
+			boss.equiparArma(armaBoss);
+
+			HiloBoss hb = new HiloBoss(boss, sup);
+
+			Thread tb = new Thread(hb);
+			
+			tb.start();
+		}
+	}
+
+	/**
 	 * se generan aleatoriamente de 1 a 20 aliados y se enfrentan a un boss en la
 	 * fortaleza por turnos
 	 * 
 	 * @see Fortaleza#entrar(Personaje)
 	 */
-	private static void coliseo() {
+	private static void fortaleza() {
 		Fortaleza fort = new Fortaleza();
 		int rdm = (int) (Math.random() * 19) + 1;
 
