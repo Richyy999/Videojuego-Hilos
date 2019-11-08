@@ -88,7 +88,7 @@ public class MainVideojuego {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		System.out.println("Has derrotado a " + Supervivencia.getNumBosses() + " bosses");
+		System.out.println("Has derrotado a " + sup.getNumBosses() + " de " + rdm + " bosses");
 	}
 
 	/**
@@ -116,6 +116,12 @@ public class MainVideojuego {
 			// Activo el hilo y los personajes atacan uno por uno
 			t1.start();
 		}
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		System.out.println("Han habido " + fort.getBajas() + " bajas");
 	}
 
 	/**
