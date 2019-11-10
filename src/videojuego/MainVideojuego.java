@@ -16,7 +16,7 @@ public class MainVideojuego {
 		String eleccion = "";
 		do {
 			System.out.println(
-					"1.- Modo random\n2.- Modo normal\n3.- Asalto a la Fortaleza de Acnologia\n4.- Supervivencia\n5.- Salir");
+					"1.- Modo random\n2.- Modo normal\n3.- Coliseo\n4.- Supervivencia\n5.- Salir");
 			eleccion = sc.nextLine();
 			switch (eleccion) {
 			case "1":
@@ -88,7 +88,7 @@ public class MainVideojuego {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		System.out.println("Has derrotado a " + sup.getNumBosses() + " de " + rdm + " bosses");
+		System.out.println("Has derrotado a " + sup.getNumBosses() + " de " + rdm + " bosses\n");
 	}
 
 	/**
@@ -121,7 +121,8 @@ public class MainVideojuego {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		System.out.println("Han habido " + fort.getBajas() + " bajas");
+		int superviviente = rdm - fort.getBajas();
+		System.out.println("Han sobrevivido " + superviviente + " de " + rdm + " aliados\n");
 	}
 
 	/**
